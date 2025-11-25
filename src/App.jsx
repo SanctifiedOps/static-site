@@ -21,7 +21,7 @@ const App = () => {
               <h1>Send Static on Solana.</h1>
               <p className="hero-subtitle">
                 Mint anonymous NFT messages, route them through a ghost relay,
-                and burn $STATICS with every transmission.
+                and burn $STATIC with every transmission.
               </p>
               <div className="hero-actions">
                 <button className="primary-btn" disabled>Launch dApp (soon)</button>

@@ -21,31 +21,33 @@ body {
   margin: 0;
   min-height: 100vh;
   background: radial-gradient(circle at top, #101322 0, #05060a 45%, #020308 100%);
+  overflow: hidden; /* lock outer scroll, inner frame will scroll */
 }
+
 
 /* Outer layout */
 
 .app {
   min-height: 100vh;
-  padding: 24px 16px;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
   width: 100%;
+  padding: 0;
 }
 
-/* Full-width rounded frame */
+/* Full-width rounded frame that follows the window size */
 
 .frame {
-  width: 100%;
-  min-height: calc(100vh - 48px);
+  width: calc(100% - 40px);        /* 20px margin each side */
+  height: calc(100vh - 40px);      /* fixed to viewport height */
+  margin: 20px;
   border-radius: 26px;
   border: 1px solid #272f4b;
   background: radial-gradient(circle at top left, #101322 0, #05060f 55%, #020308 100%);
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.85);
   padding: 20px 26px 32px;
   position: relative;
+  overflow-y: auto;                /* scroll INSIDE the rounded panel */
 }
+
 
 /* Top nav */
 
@@ -263,14 +265,12 @@ body {
 /* Responsive */
 
 @media (max-width: 800px) {
-  .app {
-    padding: 12px 10px;
-  }
-
   .frame {
+    width: calc(100% - 20px);           /* smaller margin on mobile */
+    min-height: calc(100vh - 20px);
+    margin: 10px;
     padding: 16px 14px 24px;
     border-radius: 18px;
-    min-height: calc(100vh - 32px);
   }
 
   .nav-links {
@@ -288,4 +288,25 @@ body {
   .hero-panel {
     margin-top: 8px;
   }
+}
+
+/* STATIC Scrollbar Style */
+
+.frame::-webkit-scrollbar {
+  width: 10px;
+}
+
+.frame::-webkit-scrollbar-track {
+  background: rgba(15, 20, 30, 0.4);
+  border-radius: 10px;
+}
+
+.frame::-webkit-scrollbar-thumb {
+  background: #44ffb7; /* STATIC green */
+  border-radius: 10px;
+  border: 2px solid #0b0f15;
+}
+
+.frame::-webkit-scrollbar-thumb:hover {
+  background: #6bffcb;
 }
